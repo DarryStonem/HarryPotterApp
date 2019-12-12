@@ -41,6 +41,7 @@ namespace HarryPotterApp.ViewModels
         public ICommand GoToDetailsCommand { private set; get; }
         public ICommand AddNewCharacterCommand { private set; get; }
         public ICommand SetStorageCommand { private set; get; }
+        public ICommand CrashCommand { private set; get; }
 
         public INavigation Navigation { get; set; }
 
@@ -53,6 +54,7 @@ namespace HarryPotterApp.ViewModels
             GoToDetailsCommand = new Command<Type>(async (pageType) => await GoToDetails(pageType));
             AddNewCharacterCommand = new Command<Type>(async (pageType) => await AddNewCharacter(pageType));
             SetStorageCommand = new Command(() => SetStorage());
+            CrashCommand = new Command(() => throw new NotImplementedException());
         }
 
         async Task LoadData(string name)
@@ -73,6 +75,8 @@ namespace HarryPotterApp.ViewModels
 
             foreach (var item in hpCharacters)
                 Characters.Add(new CharacterViewModel(item));
+
+            Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Done!");
         }
 
         async Task GoToDetails(Type pageType)

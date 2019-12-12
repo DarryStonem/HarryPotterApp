@@ -8,9 +8,9 @@
              xmlns:behaviors="clr-namespace:HarryPotterApp.Behaviors"
              x:Class="HarryPotterApp.Views.CharactersListView"
              ios:Page.UseSafeArea="true"
-             Title="Characters List"
+             Title="Lista de personajes"
              mc:Ignorable="d">
-    <ContentPage.Content>
+    <ContentPage.Content> 
         <StackLayout Margin="5">
             <StackLayout Orientation="Horizontal" Margin="5">
                 <Label Text="Use Local Storage?"/>
@@ -24,6 +24,14 @@
             <Button Text="Add New Character"
                     Command="{Binding AddNewCharacterCommand}"
                     CommandParameter="{x:Type views:CharacterDetailsView}"
+                    Margin="5"
+                    HeightRequest="40"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    CornerRadius="5"/>
+
+            <Button Text="Crash!"
+                    Command="{Binding CrashCommand}"
                     Margin="5"
                     HeightRequest="40"
                     BackgroundColor="Blue"
